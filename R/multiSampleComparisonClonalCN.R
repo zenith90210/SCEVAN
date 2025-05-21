@@ -77,7 +77,7 @@ plotAllClonalCN <- function(samples, name){
 #' @examples 
 #' 
 multiSampleComparisonClonalCN <- function(listCountMtx, resList, listNormCells = NULL, analysisName = "all", organism = "human" , par_cores = 20, plotTree = TRUE, output_dir = "./output"){
-  #TODO add the output_dir var here as well, apply it to the plotting func
+  #This has been modified to run using samples that have already went through pipelineCNA
   
   resList = resList
   names(resList) <- names(listCountMtx)
