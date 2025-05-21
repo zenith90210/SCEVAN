@@ -76,13 +76,15 @@ plotAllClonalCN <- function(samples, name){
 #'
 #' @examples 
 #' 
-multiSampleComparisonClonalCN <- function(listCountMtx, resList, sampleAlterList, listNormCells = NULL, analysisName = "all", organism = "human" , par_cores = 20, plotTree = TRUE, output_dir = "./output"){
+multiSampleComparisonClonalCN <- function(listCountMtx, resList, listNormCells = NULL, analysisName = "all", organism = "human" , par_cores = 20, plotTree = TRUE, output_dir = "./output"){
   #TODO add the output_dir var here as well, apply it to the plotting func
   
   resList = resList
   names(resList) <- names(listCountMtx)
   
-  sampleAlterList <- sampleAlterList
+  sampleAlterList <- lapply(names(listCountMtx), function(x) {
+    analyzeSegm(x, nSub = 0)
+  })
   
   names(sampleAlterList) <- paste0(names(listCountMtx),"_subclone", 1:length(names(listCountMtx)))
   
